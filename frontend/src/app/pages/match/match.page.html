@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">     
+        <ion-button (click)="goBack()"  fill="transparent">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>   
+    <ion-title>{{matchInfo.title}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>      
+          <ion-avatar>
+            <ion-img src="../../../assets/img/pfp1.jpg"></ion-img>
+          </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <ion-segment  [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
+
+    <ion-segment-button  value="info">
+      Info
+    </ion-segment-button>
+    <ion-segment-button  value="players">
+      Players
+    </ion-segment-button>
+
+    
+  </ion-segment>
+
+  <div class="profileTab" [ngClass]="{'hide': (selectedTab!='info')}">
+    <ion-card>
+      <ion-card-header >
+        <ion-card-title>{{matchInfo.description}}</ion-card-title>
+        <ion-card-title>{{matchInfo.city}}</ion-card-title>
+        <ion-card-title>{{matchInfo.date}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{matchInfo.description}}</p>
+      </ion-card-content>
+    </ion-card> 
+
+    <ion-card >
+      <ion-toolbar>  
+        <ion-card-header >
+          <ion-card-title>Created by:</ion-card-title>
+          <ion-card-subtitle>{{ownerUsername}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-buttons slot="primary">
+          <ion-button>      
+              <ion-avatar>
+                <ion-img src="../../../assets/img/pfp1.jpg"></ion-img>
+              </ion-avatar>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card> 
+    
+
+    <ion-card>
+      <ion-toolbar>  
+        <ion-title>{{matchInfo.location}}</ion-title>
+        <ion-buttons slot="primary">
+          <ion-button> 
+            maps
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card> 
+
+    <ion-card [ngClass]="{'hide': (team1.length < 2) }" *ngIf=" this.isOwner && this.isOngoing">
+      <ion-toolbar>  
+        <ion-buttons slot="primary">
+          <ion-button (click)="finishGame(0)" style="color: blue"> 
+            Owner Wins
+          </ion-button>
+          <ion-button (click)="finishGame(1)"   style="color: red"> 
+            Challenger Wins
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card> 
+    
+  </div>
+
+  <div class="profileTab" [ngClass]="{'hide': (selectedTab!='players')}">
+    <ion-card>
+      <ion-card-header class="team1">
+        <ion-card-title>Players</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card>
+          <ion-list>
+            <ion-item button  *ngFor="let player of team1">
+              <ion-label>{{player.username}} </ion-label>                
+              <ion-avatar>
+                <ion-img src="../../../assets/img/pfp1.jpg"></ion-img>
+              </ion-avatar>     
+            </ion-item>
+          </ion-list>
+        </ion-card> 
+      </ion-card-content>
+    </ion-card> 
+  </div>
+
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="changeJoin()"  *ngIf="!isJoined && this.isOngoing">
+      Join
+    </ion-fab-button>
+    <ion-fab-button (click)="changeJoin()"  color="warning" *ngIf="isJoined && this.isOngoing">
+      Leave
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>

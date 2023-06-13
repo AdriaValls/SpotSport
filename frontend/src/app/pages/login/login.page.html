@@ -1,0 +1,35 @@
+<ion-content>
+
+  <div class="loginTab">
+        
+    <div class="LoginTitle">
+        Log In
+    </div>
+
+    <div class="selectionContainer">
+      <ion-list>
+        <ion-item fill="outline" counter="true">
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input [(ngModel)]='username' placeholder="Username"></ion-input>
+        </ion-item>
+      
+        <ion-item fill="outline">
+          <ion-label position="stacked">Password:</ion-label>
+          <ion-input  type="password" [(ngModel)]='password'   placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>     
+
+      <div class="LoginButton">
+        <div class="tabButton" (click)="login()">
+            Login
+        </div>            
+    </div>
+    
+      <div class="register">
+        <p>Not registered already? </p>
+        <p class="registerLink" routerLink="/register"> Register</p>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

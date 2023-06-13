@@ -1,0 +1,40 @@
+<ion-content>
+
+  <div class="loginTab">
+        
+    <div class="LoginTitle">
+        Register
+    </div>
+
+    <div class="selectionContainer">
+      <ion-list>
+        <ion-item fill="outline" counter="true">
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input [(ngModel)]='username' placeholder="Username"></ion-input>
+        </ion-item>
+
+        <ion-item fill="outline">
+          <ion-label position="stacked">Email:</ion-label>
+          <ion-input  type="email"  [(ngModel)]='email'  placeholder="Email"></ion-input>
+        </ion-item>
+      
+        <ion-item fill="outline">
+          <ion-label position="stacked">Password:</ion-label>
+          <ion-input  type="password" [(ngModel)]='password'   placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>     
+
+      <div class="LoginButton">
+        <div class="tabButton" (click)="register()">
+          Register
+        </div>            
+    </div>
+    
+      <div class="register">
+        <p>Have an account already? </p>
+        <p class="registerLink" routerLink="/login">Log In</p>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

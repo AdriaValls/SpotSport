@@ -1,0 +1,122 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+
+  <div class="createMatchTab" [ngClass]="{'hide': tabNum!=1}">
+        
+    <div class="createMatchtitle">
+        Select sport
+    </div>
+
+    <div class="selectionContainer">
+      <ion-grid>
+        <ion-row>  
+          <ion-col class="flex-center " *ngFor="let sport of sportNuggets" size="1">
+
+            <div class="squareNugget flex-center" (click)="selectSport(sport.name)"
+                    [ngClass]="
+                        {'activeNugget': (activeSport==sport.name)}"
+                        >
+              <ion-icon src="{{sport.icon}}"></ion-icon>                
+              <div class="sportTitle">{{sport.name}}</div>                
+            </div>  
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>     
+
+  <div class="createMatchTab" [ngClass]="{'hide': tabNum!=2}" >      
+      <div class="createMatchtitle">
+          Choose location
+      </div>
+
+      <div class="selectionContainer">
+          <div class="locationSelector">
+            <ion-list>
+              <ion-item fill="outline" counter="true">
+                <ion-label position="stacked">City:</ion-label>
+                <ion-input [(ngModel)]='city'   placeholder="Enter text"></ion-input>
+              </ion-item>
+            
+              <ion-item fill="outline">
+                <ion-label position="stacked">Direction:</ion-label>
+                <ion-input  [(ngModel)]='location'   placeholder="Enter text"></ion-input>
+              </ion-item>
+      
+            </ion-list>    
+          </div>
+      </div>
+  </div>    
+
+  <div class="createMatchTab" [ngClass]="{'hide': tabNum!=3}"  >      
+      <div class="createMatchtitle">
+          Set a date
+      </div>
+      <div class="selectionContainer">
+            <ion-datetime [(ngModel)]='date' >
+              <span slot="time-label">Match Date</span>
+            </ion-datetime>
+      </div>
+  </div>   
+
+  <div class="createMatchTab" [ngClass]="{'hide': tabNum!=4}"   >
+      
+      <div class="createMatchtitle">
+          Add information
+      </div>
+
+      <div class="selectionContainer">
+        <ion-list>
+            <ion-item fill="outline" counter="true">
+              <ion-label position="stacked">Match Title:</ion-label>
+              <ion-input [(ngModel)]='title'  maxlength="35" placeholder="Enter text"></ion-input>
+            </ion-item>
+          
+            <ion-item fill="outline">
+              <ion-label position="stacked">Description:</ion-label>
+              <ion-input  [(ngModel)]='description'   placeholder="Enter text"></ion-input>
+            </ion-item>
+    
+          </ion-list>          
+      </div>
+  </div>   
+
+
+
+  <div class="createNav">   
+
+    <ion-popover #popover [isOpen]="errorPop" (didDismiss)="errorPop = false">
+      <ng-template>
+        <ion-content class="ion-padding">{{errorMsg}}</ion-content>
+      </ng-template>
+    </ion-popover>
+
+      <div class="tabButtons">
+          <div [ngClass]="{'hide': tabNum==1,'tabButton': tabNum!=1 }"  (click)="selectTab(false)">
+              Previous
+          </div>
+          <div [ngClass]="{'tabButton': tabNum!=4,'hide': tabNum==4 }" (click)="selectTab(true)">
+              Next
+          </div>
+          <div [ngClass]="{'hide': tabNum!=4,'tabButton': tabNum==4 }"  (click)="finishMatch()">
+            Finish
+        </div>            
+      </div>
+      <div class="tabDots">
+          <div class="tabDot" [ngClass]="{'dotActive': tabNum==1}">
+          </div>
+          <div class="tabDot" [ngClass]="{'dotActive': tabNum==2}">
+          </div>
+          <div class="tabDot"[ngClass]="{'dotActive': tabNum==3}">
+          </div>
+          <div class="tabDot" [ngClass]="{'dotActive': tabNum==4}">
+          </div>
+      </div>
+  </div>
+
+</ion-content>

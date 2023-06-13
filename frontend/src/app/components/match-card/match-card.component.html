@@ -1,0 +1,33 @@
+<ion-card>
+  <ion-card-header>
+    
+    <div  class="flex-center">
+      <ion-icon color="primary" src="../../../assets/icon/sports_basketball.svg"></ion-icon>       
+      <p class="head-text"> {{matchInfo.sport}}</p>
+    </div>
+    
+    <p class="match-date">{{matchInfo.location}}</p>
+    <div class="pariticipants"class="flex-center">
+      <p class="head-text"> 1/2 </p>
+      <ion-icon name="accessibility-outline"></ion-icon>
+    </div>
+  </ion-card-header>  
+
+
+  <ion-card-content class="matchInfo">
+    
+    <p>{{matchInfo.title}}</p>
+
+
+    <div  class="matchCardBot ">
+      <ion-icon name="location-outline"></ion-icon>
+      <p class="match-date">{{matchInfo.date}}</p>
+      <ion-button (click)="gotoMatch()"  fill="transparent">
+        <ion-icon slot="icon-only" color="primary" name="send"></ion-icon>
+      </ion-button>
+      
+    </div>
+
+    
+  </ion-card-content>
+</ion-card>

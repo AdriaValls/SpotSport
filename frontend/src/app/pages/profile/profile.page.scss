@@ -1,0 +1,42 @@
+.profileTop{
+    display: flex;
+    height: 15vh;
+    padding:   3vh 5vh 0 5vh;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
+.topUsername{
+    font-size: 32px;
+    text-decoration: underline;
+}
+.profileBio{
+    height: 10vh;
+    padding:   3vh 5vh 0 5vh;
+    box-sizing: border-box;
+}
+
+.tabSelector{
+
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tabBtn{
+    border: none;
+    background: none;
+    font-size: 1rem;
+}
+
+.tabBtnActive{
+    border-radius: 0;
+    border-color: var(--main);
+    border-bottom-style: solid;
+    border-radius: 0 0 2px 0;
+}
+
+.hide{
+    display: none;
+}

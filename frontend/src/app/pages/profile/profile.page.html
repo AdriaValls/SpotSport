@@ -1,0 +1,45 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-content>
+    <div class="profileTop">
+        <p class="topUsername" >{{user.username}}</p>  
+        <ion-avatar  >
+            <ion-img src="../../../assets/img/pfp1.jpg"></ion-img>
+        </ion-avatar>
+    </div>
+    
+    <div class="profileBio">
+        {{user.description}}
+    </div>
+
+    <ion-segment  [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
+
+        <ion-segment-button  value="upcoming">
+            Joined
+        </ion-segment-button>
+        <ion-segment-button  value="history">
+            Owned
+         </ion-segment-button>
+         <ion-segment-button  value="settings">
+            Settings
+         </ion-segment-button>
+
+        
+    </ion-segment>
+
+    <div class="profileTab" [ngClass]="{'hide': (selectedTab!='upcoming')}">
+        <app-match-card *ngFor="let match of JoinedMatches"  [matchInfo]="match" (goMatchEvent)="gotoMatch($event)"></app-match-card>
+
+    </div>
+
+    <div class="profileTab" [ngClass]="{'hide': (selectedTab!='history')}">
+        <app-match-card *ngFor="let match of OwnedMatches"  [matchInfo]="match" (goMatchEvent)="gotoMatch($event)"></app-match-card>
+    </div>
+
+    <div class="profileTab" [ngClass]="{'hide': (selectedTab!='settings')}">
+        email: {{user.email}}
+    </div>
+
+</ion-content>

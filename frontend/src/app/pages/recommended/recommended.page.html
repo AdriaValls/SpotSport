@@ -1,0 +1,26 @@
+<ion-header>
+    <app-header></app-header>
+    <ion-toolbar>
+        <ion-segment [scrollable]="true" value="all">
+            <ion-segment-button value="all">
+                <ion-icon name="apps-outline"></ion-icon>
+            </ion-segment-button> 
+
+            <ion-segment-button  *ngFor="let sport of sportNuggets" value="{{sport.name}}">
+                <ion-icon src="{{sport.icon}}"></ion-icon>                
+                <ion-label >
+                   {{sport.name}}
+                </ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="recommendedTitle">
+        Take a look at this match! 
+    </div>
+    
+
+    <app-match-card  [matchInfo]="recommendedMatch" (goMatchEvent)="gotoMatch($event)"></app-match-card>
+
+</ion-content>
